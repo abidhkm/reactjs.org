@@ -57,15 +57,17 @@ const TitleAndMetaTags = ({title, ogDescription, canonicalUrl}: Props) => {
         content={ogDescription || defaultDescription}
       />
       <meta property="fb:app_id" content="623268441017527" />
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      {canonicalUrl && (
-        <link
+      {canonicalUrl && 
+      <React.Fragment>
+      <link rel="canonical" href={canonicalUrl} />
+      <link
           rel="alternate"
           href={defaultPage(canonicalUrl)}
           hreflang="x-default"
         />
-      )}
-      {canonicalUrl && alternatePages(canonicalUrl)}
+      {alternatePages(canonicalUrl)}
+      </React.Fragment>
+      }
     </Helmet>
   );
 };
